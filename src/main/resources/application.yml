@@ -1,0 +1,12 @@
+#spring.application.name=myboard
+#Thymeleaf (1.루트폴더 변경, 2. 타임리프 캐시 설정)
+
+spring:
+  thymeleaf:
+    prefix: classpath:templates/thymeleaf/
+    check-template-location: true
+    suffix: .html
+    cache: false   # default : true 개발시에는 false로 설정하는 것이 좋음.
+
+
+

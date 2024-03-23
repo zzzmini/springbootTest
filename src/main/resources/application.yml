@@ -3,10 +3,7 @@
 
 spring:
   thymeleaf:
-    prefix: classpath:templates/thymeleaf/
+#    prefix: classpath:templates
     check-template-location: true
     suffix: .html
     cache: false   # default : true 개발시에는 false로 설정하는 것이 좋음.
-
-
-

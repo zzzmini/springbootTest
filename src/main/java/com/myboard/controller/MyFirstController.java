@@ -9,4 +9,9 @@ public class MyFirstController {
     public String hi(){
         return "greetings";
     }
+
+    @GetMapping("/test")
+    public String test(){
+        return "test";
+    }
 }

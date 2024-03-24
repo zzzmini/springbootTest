@@ -1,6 +1,6 @@
 package com.myboard.controller;
 
-import com.myboard.dto.ArticleForm;
+import com.myboard.dto.ArticleForm_Old;
 import com.myboard.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class ArticleController {
 
 
     @PostMapping("/articles/create")
-    public String CreateArticle(ArticleForm form, Model model){
+    public String CreateArticle(ArticleForm_Old form, Model model){
         model.addAttribute("result", form.toString());
         // 1. DTO를 Entity로 저장하기
         Article article = form.toEntity();

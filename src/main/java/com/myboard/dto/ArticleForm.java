@@ -1,4 +1,6 @@
-package dto;
+package com.myboard.dto;
+
+import com.myboard.entity.Article;
 
 public class ArticleForm {
     private String title;  // 제목을 받을 필드
@@ -31,5 +33,9 @@ public class ArticleForm {
     public ArticleForm(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public Article toEntity(){
+        return new Article(null, title, content);
     }
 }

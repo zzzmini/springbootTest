@@ -17,7 +17,8 @@ public class ArticleController {
     @PostMapping("/articles/create")
     public String CreateArticle(ArticleForm form, Model model){
         model.addAttribute("result", form.toString());
-//        System.out.println(form.toString());
+        // 1. DTO를 Entity로 저장하기
+        // 2. Repository를 이용해 Entity를 DB에 저장하기
         return "/result";
     }
 }

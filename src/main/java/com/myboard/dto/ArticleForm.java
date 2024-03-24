@@ -16,7 +16,7 @@ public class ArticleForm {
     private String content;  // 내용을 받을 필드
 
     public Article toEntity(){
-        return new Article(null, title, content);
+        return new Article(id, title, content);
     }
 
     public static ArticleForm to(Article article){

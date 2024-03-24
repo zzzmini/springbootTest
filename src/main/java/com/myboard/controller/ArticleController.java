@@ -29,7 +29,7 @@ public class ArticleController {
 
 
     @PostMapping("/articles/create")
-    public RedirectView CreateArticle(ArticleForm_Old form, Model model){
+    public RedirectView createArticle(ArticleForm form, Model model){
         model.addAttribute("result", form.toString());
         // 1. DTO를 Entity로 저장하기
         Article article = form.toEntity();
@@ -71,5 +71,33 @@ public class ArticleController {
         model.addAttribute("articles", articleForms);
         // 3. 뷰  페이지 반환하기
         return "/articles/show_all";
+    }
+
+    @GetMapping("/articles/{id}/update")
+    public String viewUpdateArticle(@PathVariable Long id, Model model){
+        // 수정할 데이터 가져오기
+        Article article = articleRepository.findById(id).orElse(null);
+        ArticleForm dto = ArticleForm.to(article);
+        // 뷰 페이지 설정하기
+        model.addAttribute("dto", dto);
+        return "/articles/update";
+    }
+
+    @PostMapping("/articles/update")
+    public RedirectView updateArticle(ArticleForm form){
+        log.info("updateArticle : " + form.toString());
+        Article saved;
+        String url = "/articles/";
+        // 1. DTO를 Entity로 저장하기
+        Article article = form.toEntity();
+        log.info("updateArticle : " +article.toString());
+        // 2. Repository를 이용해 Entity를 DB에 저장하기
+        Article target = articleRepository.findById(form.getId()).orElse(null);
+
+        if(target != null){
+            saved = articleRepository.save(article);
+            url = url + saved.getId();
+        }
+        return new RedirectView(url) ;
     }
 }

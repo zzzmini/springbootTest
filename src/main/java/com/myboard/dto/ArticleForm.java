@@ -1,39 +1,18 @@
 package com.myboard.dto;
 
 import com.myboard.entity.Article;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@AllArgsConstructor
+@ToString
+@Getter
+@Setter
 public class ArticleForm {
     private String title;  // 제목을 받을 필드
     private String content;  // 내용을 받을 필드
-
-    @Override
-    public String toString() {
-        return "ArticleForm{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public ArticleForm(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 
     public Article toEntity(){
         return new Article(null, title, content);

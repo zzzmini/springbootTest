@@ -1,8 +1,12 @@
 package com.myboard.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
+@Getter
 public class Article {
     @Id
     @Column(name="id")

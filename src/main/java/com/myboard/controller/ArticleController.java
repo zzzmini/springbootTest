@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.myboard.repository.ArticleRepository;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ArticleController {
 
 
     @PostMapping("/articles/create")
-    public String CreateArticle(ArticleForm_Old form, Model model){
+    public RedirectView CreateArticle(ArticleForm_Old form, Model model){
         model.addAttribute("result", form.toString());
         // 1. DTO를 Entity로 저장하기
         Article article = form.toEntity();
@@ -36,7 +37,8 @@ public class ArticleController {
         Article saved = articleRepository.save(article);
 //        System.out.println(saved);
         log.info(saved.toString());
-        return "/result";
+        String url = "/articles/" + saved.getId();
+        return new RedirectView(url) ;
     }
 
     @GetMapping("/articles/{id}")

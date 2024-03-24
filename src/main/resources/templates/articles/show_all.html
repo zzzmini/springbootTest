@@ -26,7 +26,9 @@
       <div th:each="article : ${articles}">
         <tr>
           <th scope="row" th:text="${article.id}">1</th>
-          <td th:text="${article.title}">제목111</td>
+          <td>
+            <a th:text="${article.title}" th:href="@{/articles/{id}(id=${article.id})}">제목111 </a>
+          </td>
           <td th:text="${article.content}">내용 1111</td>
         </tr>
       </div>
